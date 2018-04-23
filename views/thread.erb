@@ -1,0 +1,10 @@
+<h1><%= @thread_name %></h1>
+<ul>
+  <% @posts.each do |post| %>
+    <%= post[:name] %>
+    <%= post[:created_at] %>
+    <%= post[:content] %>
+  <% end %>
+</ul>
+
+<!-- ここらへんにフォーム -->

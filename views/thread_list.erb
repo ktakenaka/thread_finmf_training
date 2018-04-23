@@ -1,0 +1,10 @@
+<h1>スレッド一覧</h1>
+<ul>
+  <% @threads.each do |thread| %>
+    <%= thread[:created_at] %>
+    <%= thread[:title] %>
+    <%= thread[:user_name] %>
+  <% end %>
+</ul>
+
+<!-- ここらへんにフォーム -->
