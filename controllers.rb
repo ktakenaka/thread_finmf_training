@@ -4,24 +4,21 @@ require './models.rb'
 
 get "/" do
   @title = "threads"
-  @threads = [
-    { created_at: 18, title: 'trial', user_name: 'take' }
-  ]
+  @threads = Threads.read_list
   erb :thread_list
 end
 
 get "/:thread_name" do
   @thread_name = params[:thread_name]
-  @posts = [
-    { name: 'take', created_at: 30000, content: 'あいうえお' }
-  ]
+  @posts = Posts
 
   erb :thread
 end
 
-post "/new" do
+post "/new_thread" do
   #create new thread
   #redirect /thread
+  redirect erb :thread
 end
 
 post "/:thread_name/new/?:reply_to" do
