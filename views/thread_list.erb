@@ -1,10 +1,22 @@
 <h1>スレッド一覧</h1>
 <ul>
   <% @threads.each do |thread| %>
-    <%= thread[:created_at] %>
-    <%= thread[:title] %>
-    <%= thread[:user_name] %>
+    <%= thread['created_at'] %>
+    <%= thread['thread_name'] %>
+    <%= thread['user_name'] %><br>
   <% end %>
 </ul>
 
-<!-- ここらへんにフォーム -->
+<form action="thread" method="POST">
+  <div>
+    名前:<br>
+    <input type="text" name="user_name" value="">
+  </div>
+  <div>
+    スレタイトル:<br>
+    <textarea name="thread_name" rows="2"></textarea>
+  </div>
+  <div>
+    <input type="submit" value="send">
+  </div>
+</form>

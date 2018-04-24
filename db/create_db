@@ -1,0 +1,16 @@
+create database bulletin_board;
+
+create table bulletin_board.threads (
+  id int, thread_name varchar(20),
+  user_name varchar(20),
+  created_at datetime,
+  updated_at datetime
+  );
+
+create table bulletin_board.posts (
+  id int, user_name varchar(20),
+  content varchar(1000),
+  created_at datetime,
+  thread_id int,
+  reply_to int
+  );

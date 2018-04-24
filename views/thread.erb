@@ -1,10 +1,17 @@
 <h1><%= @thread_name %></h1>
 <ul>
   <% @posts.each do |post| %>
-    <%= post[:name] %>
-    <%= post[:created_at] %>
-    <%= post[:content] %>
+    <%= post['user_name'] %>
+    <%= post['created_at'] %><br>
+    <%= post['content'] %><br>
   <% end %>
 </ul>
 
-<!-- ここらへんにフォーム -->
+<form action="/post"  method="POST">
+  名前:<br>
+  <input type="text" name="user_name" value="">
+  投稿:<br>
+  <textarea name="post" rows="2"></textarea>
+  <input type="hidden" value="<%= @thread_name %>" name="thread_name">
+  <input type="submit" value="send">
+</form>
