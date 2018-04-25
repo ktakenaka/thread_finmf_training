@@ -1,24 +1,31 @@
 <div class="container">
   <h1>スレッド一覧</h1>
-  <ul>
-    <% @threads.each do |thread| %>
-      <%= thread['created_at'] %>
-      <a href="<%= thread['thread_name'] %>"><%= thread['thread_name'] %></a>
-      <%= thread['user_name'] %><br>
-    <% end %>
-  </ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th id='date-time'>date-time</th>
+        <th id='name'>name</th>
+        <th id='title'>title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @threads.each do |thread| %>
+        <tr>
+          <th><%= thread['created_at'] %></th>
+          <td><%= thread['user_name'] %></td>
+          <td><a href="<%= thread['thread_name'] %>"><%= thread['thread_name'] %></a></td>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <form action="thread" method="POST">
-    <div>
-      名前:<br>
-      <input type="text" name="user_name" value="">
+    <div class="form-group">
+      <label for="user_name">名前</label>
+      <input class="form-control" type="text" name="user_name" id="user_name">
     </div>
-    <div>
-      スレタイトル:<br>
-      <textarea name="thread_name" rows="2"></textarea>
-    </div>
-    <div>
-      <input type="submit" value="send">
-    </div>
+      <label for="thread_name">スレタイトル</label>
+      <textarea class="form-control" id="thread_name" name="thread_name" rows="1"></textarea>
+      <input type="submit" value="create new thread">
   </form>
 </div>

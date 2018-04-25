@@ -67,3 +67,26 @@ p.background {
 p.under {
   text-decoration: underline;
 }
+
+/*table*/
+th#date-time {
+  width: 200px;
+}
+th#name {
+  width: 200px;
+}
+
+input#user_name {
+  width: 300px
+}
+
+/*post*/
+span.user_name {
+  width: 200px
+}
+span.created_time {
+  width: 300px
+}
+span.content {
+  font: 150%
+}
