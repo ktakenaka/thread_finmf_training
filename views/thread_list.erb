@@ -1,22 +1,24 @@
-<h1>スレッド一覧</h1>
-<ul>
-  <% @threads.each do |thread| %>
-    <%= thread['created_at'] %>
-    <%= thread['thread_name'] %>
-    <%= thread['user_name'] %><br>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>スレッド一覧</h1>
+  <ul>
+    <% @threads.each do |thread| %>
+      <%= thread['created_at'] %>
+      <a href="<%= thread['thread_name'] %>"><%= thread['thread_name'] %></a>
+      <%= thread['user_name'] %><br>
+    <% end %>
+  </ul>
 
-<form action="thread" method="POST">
-  <div>
-    名前:<br>
-    <input type="text" name="user_name" value="">
-  </div>
-  <div>
-    スレタイトル:<br>
-    <textarea name="thread_name" rows="2"></textarea>
-  </div>
-  <div>
-    <input type="submit" value="send">
-  </div>
-</form>
+  <form action="thread" method="POST">
+    <div>
+      名前:<br>
+      <input type="text" name="user_name" value="">
+    </div>
+    <div>
+      スレタイトル:<br>
+      <textarea name="thread_name" rows="2"></textarea>
+    </div>
+    <div>
+      <input type="submit" value="send">
+    </div>
+  </form>
+</div>

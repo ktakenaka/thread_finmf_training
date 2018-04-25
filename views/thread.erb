@@ -1,17 +1,18 @@
-<h1><%= @thread_name %></h1>
-<ul>
-  <% @posts.each do |post| %>
-    <%= post['user_name'] %>
-    <%= post['created_at'] %><br>
-    <%= post['content'] %><br>
-  <% end %>
-</ul>
-
-<form action="/post"  method="POST">
-  名前:<br>
-  <input type="text" name="user_name" value="">
-  投稿:<br>
-  <textarea name="post" rows="2"></textarea>
-  <input type="hidden" value="<%= @thread_name %>" name="thread_name">
-  <input type="submit" value="send">
-</form>
+<div class="container">
+  <h1><%= @thread_name %></h1>
+  <ul>
+    <% @posts.each do |post| %>
+      <%= post['user_name'] %>
+      <%= post['created_at'] %><br>
+      <%= post['content'] %><br>
+    <% end %>
+  </ul>
+  <form action="/post"  method="POST">
+    名前:<br>
+    <input type="text" name="user_name" value="">
+    投稿:<br>
+    <textarea name="content" rows="2"></textarea>
+    <input type="hidden" value="<%= @thread_name %>" name="thread_name">
+    <input type="submit" value="send">
+  </form>
+</div>
