@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.11.3)
+    executables (0.1.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.2)
@@ -29,8 +30,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  executables
   minitest
   mysql2
+  rack
   rack-test
   sinatra
   sinatra-contrib

@@ -19,9 +19,13 @@ get "/:thread_id" do
 end
 
 post "/thread" do
-  thread_id = Thread2ch.create(params['user_name'], params['thread_name'])
-  #SQLにつくる、IDもらう、返す
-  redirect "/#{thread_id}"
+  if params['thread_name']
+    thread_id = Thread2ch.create(params['user_name'], params['thread_name'])
+    redirect "/#{thread_id}"
+  else
+    @alert = 'スレタイが空欄はダメ'
+    redirect '/'
+  end
 end
 
 post "/post" do

@@ -9,3 +9,5 @@ gem 'sinatra'
 gem "sinatra-contrib"
 gem 'rack-test'
 gem 'minitest'
+gem 'rack'
+gem 'executables'

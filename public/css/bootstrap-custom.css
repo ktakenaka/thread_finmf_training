@@ -82,11 +82,17 @@ input#user_name {
 
 /*post*/
 span.user_name {
-  width: 200px
+  width: 200px;
+  color: blue;
 }
 span.created_time {
-  width: 300px
+  width: 300px;
+  color: blue;
 }
 span.content {
-  font: 150%
+  font-size: 20px;
+}
+p.content {
+  border-bottom: 1px solid;
+  font-size: 20px;
 }

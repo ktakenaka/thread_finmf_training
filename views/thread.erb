@@ -1,11 +1,13 @@
 <div class="container">
   <h1>スレッド名：<%= @thread_name %></h1>
+
   <div>
     <ul class="post">
       <% @posts.each do |post| %>
+
         <span class="user_name"><%= post['user_name'] %></span>
         <span class="created_time"><%= post['created_at'] %></span><br>
-        <span class="content"><%= post['content'] %></span><br>
+        <p class="content"><%= post['content'] %></p>
       <% end %>
     </ul>
   </div>
