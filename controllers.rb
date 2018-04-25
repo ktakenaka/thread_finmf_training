@@ -8,21 +8,23 @@ get "/" do
   erb :thread_list
 end
 
-get "/:thread_name" do
-  @thread_name = params[:thread_name]
-  @posts = Post.all(@thread_name)
+get "/:thread_id" do
+  thread = Thread2ch.new(params[:thread_id])
+  @thread_id = thread.id
+  @thread_name = thread.name
+  @posts = thread.posts
   erb :thread
 end
 
 post "/thread" do
-  thread = Thread2ch.new(params['user_name'], params['thread_name'])
-  thread.save
-  redirect "/#{thread.thread_name}"
+  thread_id = Thread2ch.create(params['user_name'], params['thread_name'])
+  #SQLにつくる、IDもらう、返す
+  redirect "/#{thread_id}"
 end
 
 post "/post" do
-  post = Post.new(params['user_name'],params['content'],params['thread_name'])
-  @thread_name = post.thread_name
+  post = Post.new(params['user_name'],params['content'],params['thread_id'])
+  thread_id = post.thread_id
   post.save
-  redirect "/#{@thread_name}"
+  redirect "/#{thread_id}"
 end
