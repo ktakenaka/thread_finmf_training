@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative './models/thread.rb'
-require_relative './models/post.rb'
+require_relative './models/thread'
+require_relative './models/post'
 
 get "/" do
   @page_title = "threads"

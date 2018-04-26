@@ -1,6 +1,6 @@
-require_relative './application_entity'
+require_relative 'db'
 
-class Post < ApplicationEntity
+class Post
   MIN_SIZE = 3
   MAX_SIZE = 100
   attr_reader :id,:user_name,:content,:created_at,:thread_id

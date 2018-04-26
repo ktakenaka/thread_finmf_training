@@ -1,6 +1,6 @@
-require_relative 'application_entity'
+require_relative 'db'
 
-class Thread2ch < ApplicationEntity
+class Thread2ch
   attr_reader :id, :thread_name, :user_name, :created_at
   def initialize(id: nil, thread_name: 'no title', user_name: nil, created_at: nil)
     @id          = id
