@@ -5,9 +5,9 @@
     <ul class="post">
       <% @posts.each do |post| %>
 
-        <span class="user_name"><%= post['user_name'] %></span>
-        <span class="created_time"><%= post['created_at'] %></span><br>
-        <p class="content"><%= post['content'] %></p>
+        <span class="user_name"><%= post[:user_name] %></span>
+        <span class="created_time"><%= post[:created_at] %></span><br>
+        <p class="content"><%= post[:content] %></p>
       <% end %>
     </ul>
   </div>

@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS threads (
   thread_name VARCHAR(25) NOT NULL,
   user_name VARCHAR(25) DEFAULT 'nobody',
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-)
+);

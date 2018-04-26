@@ -1,36 +1,40 @@
 require 'sinatra'
 require 'sinatra/reloader'
-#require './models.rb'
-require './model_thread.rb'
-require './model_post.rb'
+require_relative './models/thread.rb'
+require_relative './models/post.rb'
 
 get "/" do
-  @title = "threads"
+  @page_title = "threads"
   @threads = Thread2ch.all
   erb :thread_list
 end
 
 get "/:thread_id" do
-  thread = Thread2ch.new(params[:thread_id])
+  thread = Thread2ch.new(id: params[:thread_id])
   @thread_id = thread.id
-  @thread_name = thread.name
+  @thread_name = thread.thread_name
   @posts = thread.posts
   erb :thread
 end
 
 post "/thread" do
-  if params['thread_name']
-    thread_id = Thread2ch.create(params['user_name'], params['thread_name'])
-    redirect "/#{thread_id}"
-  else
-    @alert = 'スレタイが空欄はダメ'
-    redirect '/'
-  end
+  user_name ||= 'nobody'
+  new_thread = Thread2ch.new(
+    thread_name: params['thread_name'],
+    user_name:   user_name
+  )
+  new_thread.save
+  redirect "/"
 end
 
 post "/post" do
-  post = Post.new(params['user_name'],params['content'],params['thread_id'])
-  thread_id = post.thread_id
+  user_name ||= 'nobody'
+  post = Post.new(
+    user_name: user_name,
+    content:   params['content'],
+    thread_id: params['thread_id']
+  )
+  post.validate
   post.save
-  redirect "/#{thread_id}"
+  redirect back
 end
