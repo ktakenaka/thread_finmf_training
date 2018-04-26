@@ -6,7 +6,7 @@
       <% @posts.each do |post| %>
 
         <span class="user_name"><%= post[:user_name] %></span>
-        <span class="created_time"><%= post[:created_at] %></span><br>
+        <span class="created_time"><%= post[:created_at].to_s.gsub(/ [+-][0-9]+/,'') %></span><br>
         <p class="content"><%= post[:content] %></p>
       <% end %>
     </ul>

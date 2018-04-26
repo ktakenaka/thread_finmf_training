@@ -10,31 +10,32 @@ get "/" do
 end
 
 get "/:thread_id" do
-  thread = Thread2ch.new(id: params[:thread_id])
+  thread = Thread2ch.find(params[:thread_id])
+  @posts = thread.posts
   @thread_id = thread.id
   @thread_name = thread.thread_name
-  @posts = thread.posts
   erb :thread
 end
 
 post "/thread" do
-  user_name ||= 'nobody'
+  params['user_name'] = params['user_name'].gsub!(/ /, '')
   new_thread = Thread2ch.new(
     thread_name: params['thread_name'],
-    user_name:   user_name
+    user_name:   params['user_name']
   )
   new_thread.save
   redirect "/"
 end
 
 post "/post" do
-  user_name ||= 'nobody'
-  post = Post.new(
-    user_name: user_name,
-    content:   params['content'],
-    thread_id: params['thread_id']
-  )
-  post.validate
-  post.save
+  if params['content'].gsub!(/ /,'')
+    params['user_name'] = params['user_name'].gsub!(/ /, '')
+    post = Post.new(
+      user_name: params['user_name'],
+      content:   params['content'],
+      thread_id: params['thread_id']
+    )
+    post.save
+  end
   redirect back
 end

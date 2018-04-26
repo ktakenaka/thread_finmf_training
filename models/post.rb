@@ -4,9 +4,9 @@ class Post < ApplicationEntity
   MIN_SIZE = 3
   MAX_SIZE = 100
   attr_reader :id,:user_name,:content,:created_at,:thread_id
-  def initialize(id: nil, user_name: 'nobody', content: nil, created_at: nil, thread_id: nil)
+  def initialize(id: nil, user_name: nil, content: nil, created_at: nil, thread_id: nil)
     @id          = id
-    @user_name   = user_name
+    @user_name   = user_name || 'nobody'
     @content     = content
     @created_at  = created_at
     @thread_id   = thread_id.to_i

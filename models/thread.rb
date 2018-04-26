@@ -2,10 +2,10 @@ require_relative 'application_entity'
 
 class Thread2ch < ApplicationEntity
   attr_reader :id, :thread_name, :user_name, :created_at
-  def initialize(id: nil, thread_name: 'no title', user_name: 'nobody', created_at: nil)
+  def initialize(id: nil, thread_name: 'no title', user_name: nil, created_at: nil)
     @id          = id
     @thread_name = thread_name
-    @user_name   = user_name
+    @user_name   = user_name || 'nobody'
     @created_at  = created_at
   end
 
@@ -21,5 +21,10 @@ class Thread2ch < ApplicationEntity
 
   def self.all
     DB.query("SELECT * FROM threads ORDER BY created_at DESC")
+  end
+
+  def self.find(id)
+    info_hash = DB.query("SELECT * FROM threads WHERE id='#{id}'").first
+    new(info_hash)
   end
 end

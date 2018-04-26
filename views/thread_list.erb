@@ -11,7 +11,7 @@
     <tbody>
       <% @threads.each do |thread| %>
         <tr>
-          <th><%= thread[:created_at] %></th>
+          <th><%= thread[:created_at].to_s.gsub(/ [+-][0-9]+/,'') %></th>
           <td><%= thread[:user_name] %></td>
           <td><a href="<%= thread[:id] %>"><%= thread[:thread_name] %></a></td>
         <tr>

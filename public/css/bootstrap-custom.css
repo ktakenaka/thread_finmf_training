@@ -83,11 +83,11 @@ input#user_name {
 /*post*/
 span.user_name {
   width: 200px;
-  color: blue;
+  color: green;
 }
 span.created_time {
   width: 300px;
-  color: blue;
+  color: green;
 }
 span.content {
   font-size: 20px;
